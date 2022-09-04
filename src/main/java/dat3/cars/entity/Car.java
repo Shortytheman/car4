@@ -1,6 +1,7 @@
 package dat3.cars.entity;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -38,4 +39,11 @@ public class Car {
   @UpdateTimestamp
   LocalDateTime edited;
 
+  public Car(int id, String brand, String model, double pricePrDay, double bestDiscount) {
+    this.id = id;
+    this.brand = brand;
+    this.model = model;
+    this.pricePrDay = pricePrDay;
+    this.bestDiscount = bestDiscount;
+  }
 }

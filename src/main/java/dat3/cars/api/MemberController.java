@@ -42,9 +42,7 @@ public class MemberController {
   //Security ADMIN
   @GetMapping
   public List<MemberResponse> getMembers(){
-
     return memberService.getMembers();
-
   }
 
 
