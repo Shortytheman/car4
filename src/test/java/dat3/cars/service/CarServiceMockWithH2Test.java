@@ -3,6 +3,9 @@ package dat3.cars.service;
 import dat3.cars.dto.CarRequest;
 import dat3.cars.dto.CarResponse;
 import dat3.cars.entity.Car;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import dat3.cars.repository.CarRepository;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,6 +13,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @DataJpaTest
@@ -46,7 +51,13 @@ public class CarServiceMockWithH2Test {
     carRequest.setBrand("sæbe");
     carRequest.setModel("honinng");
     CarResponse carResponse = carService.addCar(carRequest,true);
+    assertEquals(carResponse.getCreated(),LocalDateTime.now());
+  }
 
+  @Test
+  void getCars(){
+    List<CarResponse> cars = carService.getCars();
+    assertEquals(2,cars.size());
   }
 
 }

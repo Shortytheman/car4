@@ -10,6 +10,7 @@ import dat3.cars.entity.Member;
 import dat3.cars.repository.CarRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -45,4 +46,8 @@ public CarResponse addCar(CarRequest carRequest, boolean includeAll){
     carRepository.save(car);
   }
 
+  public CarResponse findCarById(int id) {
+    Car found = carRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found"));
+    return new CarResponse(found,false);
+  }
 }

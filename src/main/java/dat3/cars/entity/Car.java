@@ -7,6 +7,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -38,6 +40,14 @@ public class Car {
 
   @UpdateTimestamp
   LocalDateTime edited;
+
+  @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+  private List<Reservation> reservations = new ArrayList<>();
+
+  public void addReservation(Reservation reservation){
+    reservations.add(reservation);
+    //reservation.setCar(this);
+  }
 
   public Car(int id, String brand, String model, double pricePrDay, double bestDiscount) {
     this.id = id;

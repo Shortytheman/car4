@@ -5,6 +5,7 @@ import dat3.cars.dto.MemberResponse;
 import dat3.cars.entity.Member;
 import dat3.cars.repository.MemberRepository;
 import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 class MemberServiceMockWithH2Test {

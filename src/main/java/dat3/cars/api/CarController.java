@@ -22,7 +22,7 @@ public class CarController {
 
 @PostMapping
 public CarResponse addCar(@RequestBody CarRequest body) {
-  return carService.addCar(body);
+  return carService.addCar(body,true);
 }
 
   @GetMapping
