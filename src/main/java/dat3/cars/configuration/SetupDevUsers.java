@@ -5,6 +5,7 @@ import dat3.cars.entity.Member;
 import dat3.cars.entity.Reservation;
 import dat3.cars.repository.CarRepository;
 import dat3.cars.repository.MemberRepository;
+import dat3.cars.repository.ReservationRepository;
 import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
 import dat3.security.repository.UserWithRolesRepository;
@@ -21,13 +22,15 @@ public class SetupDevUsers implements ApplicationRunner {
 
   UserWithRolesRepository userWithRolesRepository;
   MemberRepository memberRepository;
+  ReservationRepository reservationRepository;
 
   CarRepository carRepository;
   String passwordUsedByAll;
 
   public SetupDevUsers(UserWithRolesRepository userWithRolesRepository,
                        MemberRepository memberRepository,
-                       CarRepository carRepository) {
+                       CarRepository carRepository, ReservationRepository reservationRepository) {
+    this.reservationRepository = reservationRepository;
     this.userWithRolesRepository = userWithRolesRepository;
     this.memberRepository = memberRepository;
     this.carRepository = carRepository;
@@ -46,13 +49,38 @@ public class SetupDevUsers implements ApplicationRunner {
             .bestDiscount(30.0)
             .build();
 
+    Car car2 = Car.builder()
+        .brand("JoHannes")
+        .model("V3")
+        .pricePrDay(700)
+        .bestDiscount(30.0)
+        .build();
+
+    Car car3 = Car.builder()
+        .brand("JooooHannes")
+        .model("V4")
+        .pricePrDay(700)
+        .bestDiscount(30.0)
+        .build();
+
+    Car car4 = Car.builder()
+        .brand("slam")
+        .model("bam")
+        .pricePrDay(700)
+        .bestDiscount(30.0)
+        .build();
+    carRepository.save(car4);
+    carRepository.save(car3);
+    carRepository.save(car2);
     carRepository.save(car1);
 
-    Reservation reservation1 = new Reservation(m1,car1, LocalDate.now());
-    Reservation reservation2 = new Reservation(m1,car1, LocalDate.of(2022,10,10));
+    Reservation reservation1 = new Reservation(m1,car1, "070922");
+    Reservation reservation2 = new Reservation(m1,car1, "070922");
     m1.addReservation(reservation1);
     m1.addReservation(reservation2);
-    memberRepository.save(m1);
+    reservationRepository.save(reservation1);
+    reservationRepository.save(reservation2);
+
 
     setupUserWithRoleUsers();
   }

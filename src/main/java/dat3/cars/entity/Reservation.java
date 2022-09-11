@@ -31,10 +31,10 @@ public class Reservation {
   @CreationTimestamp
   LocalDateTime reservationDate;
 
-  LocalDate rentalDate;
+  String rentalDate;
 
 
-public Reservation(Member member, Car car, LocalDate rentalDate){
+public Reservation(Member member, Car car, String rentalDate){
   this.member = member;
   this.car = car;
   this.rentalDate = rentalDate;

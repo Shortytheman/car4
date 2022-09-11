@@ -16,24 +16,26 @@ public class CarController {
 
   CarService carService;
 
-  public CarController (CarService carService){
+  public CarController(CarService carService) {
     this.carService = carService;
   }
 
-@PostMapping
-public CarResponse addCar(@RequestBody CarRequest body) {
-  return carService.addCar(body,true);
-}
+  @PostMapping
+  public CarResponse addCar(@RequestBody CarRequest body) {
+    return carService.addCar(body, true);
+  }
 
   @GetMapping
-  public List<CarResponse> getCars(){
+  public List<CarResponse> getCars() {
     return carService.getCars();
   }
 
   //Security ADMIN
   @DeleteMapping("/{id}")
-  public void deleteCarById(@PathVariable int id){
+  public void deleteCarById(@PathVariable int id) {
     carService.deleteById(id);
   }
+
+
 
 }

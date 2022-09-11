@@ -1,5 +1,5 @@
 package dat3.cars.service;
-
+/*
 import dat3.cars.dto.CarRequest;
 import dat3.cars.dto.CarResponse;
 import dat3.cars.entity.Car;
@@ -61,3 +61,4 @@ public class CarServiceMockWithH2Test {
   }
 
 }
+*/

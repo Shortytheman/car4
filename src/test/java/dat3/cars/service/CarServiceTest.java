@@ -1,5 +1,6 @@
 package dat3.cars.service;
 
+/*
 import dat3.cars.dto.CarResponse;
 import dat3.cars.entity.Car;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,3 +31,4 @@ public class CarServiceTest {
   }
 
 }
+*/

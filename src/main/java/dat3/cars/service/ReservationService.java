@@ -10,14 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
-
 @Service
 public class ReservationService {
 
   ReservationRepository reservationRepository;
   MemberRepository memberRepository;
   CarRepository carRepository;
+  private static int reservationId;
 
   public ReservationService(ReservationRepository reservationRepository, MemberRepository memberRepository, CarRepository carRepository) {
     this.reservationRepository = reservationRepository;
@@ -27,7 +26,7 @@ public class ReservationService {
 
   //memberId, carId, date
 
-  public void reserveCar(String username, int carId, LocalDate date) {
+  public void reserveCar(String username, int carId, String date) {
 
 
     Member member = memberRepository.findById(username).orElseThrow(()->
@@ -36,8 +35,23 @@ public class ReservationService {
     Car car = carRepository.findById(carId).orElseThrow(()->
         new ResponseStatusException(HttpStatus.BAD_REQUEST,"Car not found"));
 
-    Reservation reservation = new Reservation(member,car,date);
-    reservationRepository.save(reservation);
+    boolean exists = reservationRepository.existsByCar_IdAndRentalDate(carId,date);
+
+    if (exists){
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Car already reserved");
+    } else {
+      Reservation reservation = new Reservation(member, car, date);
+      reservationRepository.save(reservation);
+      reservationId = reservationRepository.save(reservation).getId();
+    }
+  }
+
+  public Reservation getReservation(int id){
+  return reservationRepository.findById(id).orElseThrow();
+  }
+
+  public int getReservationId(){
+    return reservationId;
   }
 
 }

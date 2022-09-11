@@ -28,14 +28,7 @@ public class CarRequest {
     return new Car(c.getId(),c.getBrand(),c.getModel(), c.getPricePrDay(), c.getBestDiscount());
   }
 
-  public CarRequest(String brand, String model, double pricePrDay, double bestDiscount) {
-    this.brand = brand;
-    this.model = model;
-    this.pricePrDay = pricePrDay;
-    this.bestDiscount = bestDiscount;
-  }
-
-  // Member to MemberRequest conversion
+  // Car to CarRequest conversion
   public CarRequest(Car c){
     this.brand = c.getBrand();
     this.model = getModel();
