@@ -16,7 +16,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+/*
 @DataJpaTest
 public class CarServiceMockWithH2Test {
 
@@ -59,5 +59,4 @@ public class CarServiceMockWithH2Test {
     List<CarResponse> cars = carService.getCars();
     assertEquals(2,cars.size());
   }
-
-}
+ */
