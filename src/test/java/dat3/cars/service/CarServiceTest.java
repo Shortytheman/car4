@@ -1,6 +1,6 @@
 package dat3.cars.service;
 
-/*
+
 import dat3.cars.dto.CarResponse;
 import dat3.cars.entity.Car;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,7 @@ import java.util.List;
 @DataJpaTest
 public class CarServiceTest {
 
-  @Autowired
+
   CarService carService;
 
   @BeforeEach
@@ -26,9 +26,9 @@ public class CarServiceTest {
   }
 
   @Test
-  void findAmountOfCars(){
+  void findAmountOfCars(@Autowired ){
     List<CarResponse> cars = carService.getCars();
+
   }
 
 }
-*/

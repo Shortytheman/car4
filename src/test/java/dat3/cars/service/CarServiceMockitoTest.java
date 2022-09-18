@@ -1,6 +1,5 @@
-
 package dat3.cars.service;
-/*
+
 
 import dat3.cars.dto.CarRequest;
 import dat3.cars.dto.CarResponse;
@@ -87,4 +86,3 @@ public class CarServiceMockitoTest {
   void deleteByUsername() {
   }
 }
- */
