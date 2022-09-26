@@ -50,4 +50,20 @@ public CarResponse addCar(CarRequest carRequest, boolean includeAll){
     Car found = carRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found"));
     return new CarResponse(found,false);
   }
+
+  public void editCar(CarRequest body, int id) {
+    Car car = carRepository.findById(id).orElseThrow(
+        ()->  new ResponseStatusException(HttpStatus.BAD_REQUEST,"Car with this id already exist"));
+
+    if(body.getId() != id){
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Cannot change id");
+    }
+    car.setId(body.getId());
+    car.setBrand(body.getBrand());
+    car.setModel(body.getModel());
+    car.setPricePrDay(body.getPricePrDay());
+    car.setBestDiscount(body.getBestDiscount());
+    carRepository.save(car);
+  }
+
 }
