@@ -31,6 +31,11 @@ public class CarController {
     return carService.getCars();
   }
 
+  @GetMapping("/{id}")
+  public CarResponse getCarById(@PathVariable int id){
+    return carService.findCarById(id);
+  }
+
   //Security ADMIN
   @DeleteMapping("/{id}")
   public void deleteCarById(@PathVariable int id) {
