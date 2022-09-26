@@ -32,6 +32,7 @@ public class CarResponse {
     this.id = c.getId();
     this.brand = c.getBrand();
     this.pricePrDay = c.getPricePrDay();
+    this.model = c.getModel();
     if(includeAll){
       this.bestDiscount = c.getBestDiscount();
       this.created = c.getCreated();
